@@ -16,8 +16,10 @@ for filename in os.listdir(video_dir):
         cap = cv2.VideoCapture(video_path)
         # get video duration in seconds
         duration = int(cap.get(cv2.CAP_PROP_FRAME_COUNT) / cap.get(cv2.CAP_PROP_FPS))
+        # extract index from filename
+        index = int(filename.split("_")[1].split(".")[0])
         # add video metadata to the list
-        video_metadata.append({'name': filename, 'duration': duration})
+        video_metadata.append({'name': filename, 'duration': duration, 'index': index})
         # release the video capture object
         cap.release()
 
